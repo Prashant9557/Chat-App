@@ -8,7 +8,13 @@ const Message = require('./Models/Message');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+
+app.use(cors({
+origin: ("https://deploy-chat-app.vercel.app"),
+  method:["POST", "GET"],
+  credentials: true
+}));
+
 app.use('/users', UserRoutes);
 
 require('./connection');
